@@ -8,11 +8,12 @@ class computer {
     ArrayList<Integer> mycard = new ArrayList<>();
 
 
-    public computer(String name, ArrayList<Integer> mycard) {
+    computer(String name, ArrayList<Integer> mycard) {
         this.name = name;
         this.mycard = mycard;
 
     }
+
 
 
 }
