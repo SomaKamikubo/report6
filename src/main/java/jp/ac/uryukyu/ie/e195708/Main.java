@@ -1,11 +1,14 @@
 package jp.ac.uryukyu.ie.e195708;
 
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         GameMaster master = new GameMaster();
-        //master.stage();
 
+
+        master.stage();
+
+        master.game();
 
 
     }
