@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
+/**
+ * プレイヤーの行動の実装
+ * computerクラスから継承
+ */
 class Player extends computer {
 
     Player(String name) {
@@ -12,7 +15,13 @@ class Player extends computer {
     }
 
 
-
+    /**
+     * 自分の操作
+     * 自分が出したカードが手札にあるか確認
+     * 出したカードが最大の数字か確認
+     * @param pry　自分の手札
+     * @param names　自分の名前
+     */
     void myTurn (ArrayList < Integer > pry, String names) {
         while (true) {
             //自分のターン
@@ -26,39 +35,39 @@ class Player extends computer {
             //パスする
             if (take_away == 0) {
                 System.out.println(names+"："+"pass");
-                gaverageCard.add(0);
-                Collections.sort(gaverageCard);
+                garbageCard.add(0);
+                Collections.sort(garbageCard);
                 passCheck();
                 break;
 
 
 
             } else if (check) {//自分の手札からカードを出す
-                if (gaverageCard.size() == 0) {
-                    gaverageCard.add(take_away);//出したカードを記録する
+                if (garbageCard.size() == 0) {
+                    garbageCard.add(take_away);//出したカードを記録する
                     System.out.println(names + ":" + take_away);
                     pry.remove((Integer) take_away);//出したカードを自分の手札から消す
-                    gaverageCard.removeIf(n -> n == 0);//カードを出したのでパスのカウントを０にする
-                    Collections.sort(gaverageCard);//カードを小さい順に並べる
+                    garbageCard.removeIf(n -> n == 0);//カードを出したのでパスのカウントを０にする
+                    Collections.sort(garbageCard);//カードを小さい順に並べる
                     if (pry.size() == 0) {//手札がなくなったら勝ち
                         System.out.println("あがり！！！"+"とても強いね！！１");
                         victory = true;
                     }
                     break;
                 }else {
-                    if (take_away > gaverageCard.get(gaverageCard.size() - 1)) {//出したカードより大きい数字を出している場合
-                        gaverageCard.add(take_away);//出したカードを記録する
+                    if (take_away > garbageCard.get(garbageCard.size() - 1)) {//出したカードより大きい数字を出している場合
+                        garbageCard.add(take_away);//出したカードを記録する
                         System.out.println(names + ":" + take_away);
                         pry.remove((Integer) take_away);//出したカードを自分の手札から消す
-                        gaverageCard.removeIf(n -> n == 0);//カードを出したのでパスのカウントを０にする
-                        Collections.sort(gaverageCard);//カードを小さい順に並べる
+                        garbageCard.removeIf(n -> n == 0);//カードを出したのでパスのカウントを０にする
+                        Collections.sort(garbageCard);//カードを小さい順に並べる
                         if (pry.size() == 0) {//手札がなくなったら勝ち
                             System.out.println("おしまい！！！");
                             victory = true;
                         }
                         break;
                     } else {//出したカードより小さい数字を出した場合
-                        System.out.println(gaverageCard.get(gaverageCard.size() - 1) + "より大きいカードを出してください。出せるカードがない場合は０を入力してパスしてください。");
+                        System.out.println(garbageCard.get(garbageCard.size() - 1) + "より大きいカードを出してください。出せるカードがない場合は０を入力してパスしてください。");
                     }
                 }
             }

@@ -3,7 +3,9 @@ package jp.ac.uryukyu.ie.e195708;
 
 import java.util.*;
 
-
+/**
+ * ゲームの管理
+ */
 class GameMaster {
 
     computer computer_1 = new computer("山田");
@@ -11,7 +13,10 @@ class GameMaster {
     computer computer_3 = new computer("佐藤");
     Player player = new Player("player");
 
-
+    /**
+     * 1から13の数を4個ずつ生成
+     * それぞれの手札にランダムに配る
+     */
     void stage () {
         //トランプを作る
         ArrayList<Integer> card = new ArrayList<>();
@@ -59,7 +64,9 @@ class GameMaster {
     }
 
 
-
+    /**
+     * ゲーム開始
+     */
     void game(){
         while(!player.victory) {
 
@@ -70,8 +77,6 @@ class GameMaster {
             computer_2.computerAct(computer_2.mycard, "田中");
 
             computer_3.computerAct(computer_3.mycard, "佐藤");
-
-
 
         }
     }
